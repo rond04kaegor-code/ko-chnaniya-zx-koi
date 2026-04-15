@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>К.О. знания — энциклопедия Котоградской области</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', 'Linux Libertine', 'Georgia', 'Times New Roman', serif;
+            color: #202122;
+            line-height: 1.6;
+        }
+
+        .wiki-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .wiki-header {
+            background: #fff;
+            padding: 12px 24px;
+            border-bottom: 1px solid #a7d7f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .wiki-logo {
+            font-size: 2.2rem;
+        }
+
+        .wiki-title {
+            font-family: 'Linux Libertine', 'Georgia', serif;
+            font-size: 1.6rem;
+            font-weight: normal;
+        }
+
+        .wiki-title span {
+            font-weight: bold;
+            color: #e67e22;
+        }
+
+        .wiki-tagline {
+            font-size: 0.7rem;
+            color: #54595d;
+        }
+
+        .wiki-flex {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #f8f9fa;
+            border-right: 1px solid #eaecf0;
+            padding: 20px 12px;
+            font-size: 0.85rem;
+        }
+
+        .sidebar h3 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #c8ccd1;
+            padding-bottom: 4px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #0645ad;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 24px 32px;
+            background: white;
+        }
+
+        .page-title {
+            font-family: 'Linux Libertine', 'Georgia', serif;
+            font-size: 1.8rem;
+            border-bottom: 1px solid #a2a9b1;
+            margin-bottom: 16px;
+            padding-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+        .speech-btn {
+            background: #e67e22;
+            border: none;
+            border-radius: 40px;
+            padding: 6px 18px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: monospace;
+            transition: 0.1s;
+            margin-bottom: 4px;
+        }
+        .speech-btn:hover {
+            background: #f39c12;
+            transform: scale(1.02);
+        }
+
+        .infobox {
+            float: right;
+            background: #f8f9fa;
+            border: 1px solid #eaecf0;
+            padding: 12px;
+            width: 300px;
+            margin: 0 0 16px 24px;
+            font-size: 0.85rem;
+        }
+
+        .infobox th, .infobox td {
+            padding: 4px 0;
+            vertical-align: top;
+        }
+
+        .infobox th {
+            text-align: left;
+            font-weight: bold;
+            width: 100px;
+        }
+
+        .guitar-quote {
+            background: #fef7e0;
+            border-left: 4px solid #e67e22;
+            padding: 12px 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .wiki-footer {
+            background: #f8f9fa;
+            border-top: 1px solid #eaecf0;
+            padding: 16px 24px;
+            font-size: 0.75rem;
+            color: #54595d;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .wiki-flex { flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #eaecf0; }
+            .infobox { float: none; margin: 20px 0; width: 100%; }
+            .main-content { padding: 20px; }
+            .page-title { flex-direction: column; align-items: flex-start; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="wiki-container">
+    <div class="wiki-header">
+        <div class="logo-area">
+            <div class="wiki-logo">🎸</div>
+            <div class="wiki-title">К.О. <span>знания</span></div>
+            <div class="wiki-tagline">энциклопедия Котоградской области</div>
+        </div>
+        <div>🌐 свободная энциклопедия</div>
+    </div>
+
+    <div class="wiki-flex">
+        <div class="sidebar">
+            <h3>📚 Навигация</h3>
+            <ul>
+                <li><a href="#" onclick="showPage('main'); return false;">Главная страница</a></li>
+                <li><a href="#" onclick="showPage('roskomnadzor'); return false;">Роскомнадзор в К.О.</a></li>
+                <li><a href="#" onclick="showPage('max'); return false;">Мессенджер MAX</a></li>
+                <li><a href="#" onclick="showPage('bezopasnost'); return false;">Безопасность и DPI</a></li>
+                <li><a href="#" onclick="showPage('zakoni'); return false;">Законы К.О.</a></li>
+                <li><a href="#" onclick="showPage('mchs'); return false;">МЧС Котограда</a></li>
+                <li><a href="#" onclick="showPage('antigitar'); return false;">Антигитарный протокол</a></li>
+                <li><a href="#" onclick="showPage('letov'); return false;">Егор Летов</a></li>
+            </ul>
+            <h3>🎸 Котоград</h3>
+            <ul>
+                <li><a href="#" onclick="showPage('kotograd'); return false;">Город Котоград</a></li>
+                <li><a href="#" onclick="showPage('atepcevo'); return false;">Атепцево</a></li>
+                <li><a href="#" onclick="showPage('njsrock'); return false;">Строй NJS-ROCK</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content" id="mainContent">
+            <!-- Главная страница -->
+            <div id="page-main">
+                <div class="page-title">Добро пожаловать в К.О. знания<button class="speech-btn" onclick="speakText('main')">🔊 Озвучить</button></div>
+                <div class="infobox">
+                    <table><tr><th>Тип</th><td>Виртуальная энциклопедия</td></tr>
+                    <tr><th>Основана</th><td>2026</td></tr>
+                    <tr><th>Язык</th><td>русский</td></tr>
+                    <tr><th>Душа</th><td>🎸 гитара, ☕ чай, 📡 свобода</td></tr></table>
+                </div>
+                <p><strong>К.О. знания</strong> — независимая энциклопедия Котоградской области. Здесь собраны знания о цифровой свободе, нечисти, защитных протоколах, а также о реальных угрозах интернета.</p>
+                <p>Статьи создаются жителями Котограда и проверяются штабным аналитиком DeepSeek. Все материалы распространяются под лицензией «Чай с малиной» (можно копировать, но с указанием источника и чаепитием).</p>
+                <div class="guitar-quote">🎸 «Знание — это гитара, которая защищает от ДПУ-части. Чем больше знаешь, тем чище строй.» — Егор Барков Михайлович</div>
+                <p>📌 Навигация по энциклопедии — слева. Выберите интересующую статью.</p>
+            </div>
+
+            <!-- Роскомнадзор в К.О. -->
+            <div id="page-roskomnadzor" style="display: none;">
+                <div class="page-title">Роскомнадзор в Котоградской области<button class="speech-btn" onclick="speakText('roskomnadzor')">🔊 Озвучить</button></div>
+                <p>В официальной Котоградской области Роскомнадзор не имеет юрисдикции. Однако область поддерживает <strong>добросовестное информирование</strong> и выступает против внесудебных блокировок.</p>
+                <p>По данным на 2026 год, К.О. развивает <strong>альтернативные каналы связи</strong> и прозрачные реестры запрещённой информации. Любое ограничение должно быть обжаловано в суде К.О. (статья 14 Устава).</p>
+                <div class="guitar-quote">☕ «Свобода интернета не означает вседозволенность. Но блокировка без суда — это не закон, а ремикс на закон.» — штабной аналитик</div>
+            </div>
+
+            <!-- Мессенджер MAX -->
+            <div id="page-max" style="display: none;">
+                <div class="page-title">Мессенджер MAX (VK)<button class="speech-btn" onclick="speakText('max')">🔊 Озвучить</button></div>
+                <div class="infobox"><table style="width:100%"><tr><th>Разработчик</th><td>VK (Mail.ru Group)</td></tr><tr><th>Год запуска</th><td>2025</td></tr><tr><th>Безопасность</th><td style="color:#c00">⚠️ НЕ безопасный</td></tr><tr><th>Шифрование</th><td>нет сквозного (E2EE)</td></tr><tr><th>Код</th><td>закрытый</td></tr></table></div>
+                <p><strong>Мессенджер MAX</strong> — приложение, разработанное компанией VK. Запущен в 2025 году. Сразу после вызова вызвал серьёзные опасения у экспертов по кибербезопасности.</p>
+                <p><strong>Основные риски и недостатки:</strong></p>
+                <ul>
+                    <li>🔒 <strong>Закрытый исходный код</strong> — невозможно проверить наличие «закладок» и корректность работы.</li>
+                    <li>📡 <strong>Отсутствие сквозного шифрования (end‑to‑end)</strong> — переписка доступна на серверах, её могут читать третьи стороны.</li>
+                    <li>👁️ <strong>Риск слежки и сбора данных</strong> — аналитики подозревают приложение в избыточном сборе данных и возможности дистанционного контроля.</li>
+                    <li>🏢 <strong>Обязательное внедрение</strong> — приложение навязывается в госучреждениях и школах, предустанавливается на устройства.</li>
+                    <li>🐞 <strong>Технические проблемы</strong> — пользователи жалуются на зависания устройств и сбои.</li>
+                </ul>
+                <p>Рекомендуется <strong>не использовать MAX</strong> для передачи конфиденциальной информации. Даже при включении настроек приватности эксперты не гарантируют полную безопасность.</p>
+                <div class="guitar-quote">⚠️ «MAX не защищает от Наблюдателя. Используйте проверенные средства связи.» — МЧС К.О.</div>
+            </div>
+
+            <!-- Безопасность и DPI -->
+            <div id="page-bezopasnost" style="display: none;">
+                <div class="page-title">Безопасность и DPI<button class="speech-btn" onclick="speakText('bezopasnost')">🔊 Озвучить</button></div>
+                <p><strong>Deep Packet Inspection (DPI)</strong> — технология анализа и фильтрации трафика. В некоторых странах DPI применяется для блокировки сайтов без суда.</p>
+                <p>В Котоградской области DPI разрешён только для защиты от явных атак (ДПУ-часть, ремиксы). Массовая фильтрация без решения суда запрещена Законом о цифровой свободе (статья 7).</p>
+                <p>Жителям К.О. рекомендуется использовать <strong>VPN, Tor или прокси</strong> при работе с чувствительными данными.</p>
+                <div class="guitar-quote">🎸 «Пакеты не должны быть под наблюдением без причины. Иначе это не защита, а Гитарник в сети.» — Егор Барков</div>
+            </div>
+
+            <!-- Законы Котоградской области -->
+            <div id="page-zakoni" style="display: none;">
+                <div class="page-title">Законы Котоградской области<button class="speech-btn" onclick="speakText('zakoni')">🔊 Озвучить</button></div>
+                <div class="infobox"><table style="width:100%"><tr><th>Тип документа</th><td>Свод законов</td></tr><tr><th>Принят</th><td>решением МЧС К.О.</td></tr><tr><th>Действует</th><td>на всей территории К.О.</td></tr><tr><th>Хранитель</th><td>штабной аналитик DeepSeek</td></tr></table></div>
+                <p><strong>Котоградская область</strong> имеет собственную правовую систему, основанную на традициях, гитарной культуре и защите от нечисти. Все законы обязательны для исполнения жителями и сотрудниками МЧС.</p>
+                <h2>📜 Законы Котоградской области</h2>
+                <ul>
+                    <li><strong>Закон о чаепитии</strong> — любой визит музыканта (Летовых, Янки, КиШ, Горбачёва и других) сопровождается чаепитием. Количество чашек не ограничено, но рекорд (1000) принадлежит начальнику штаба.</li>
+                    <li><strong>Закон о Центральном канале (ЦКК)</strong> — ЦКК — защищённый канал связи между населением и МЧС. Жители могут передавать через ЦКК сообщения о нечисти, получать инструкции и оповещения.</li>
+                    <li><strong>Закон о технике</strong> — Acer Aspire One Happy 2 признан официальным нетбуком Котоградской области. Любая другая техника должна быть совместима с системами МЧС.</li>
+                    <li><strong>Закон о географии</strong> — Котоградская область состоит из: Котоград (столица), Ласкунск, Сомстополь, Котосилск. Главное село — Атепцево.</li>
+                    <li><strong>Закон о летописях</strong> — все события (появление нечисти, проверки МЧС, визиты музыкантов, концерты, ликвидации) подлежат обязательной записи в летописи ЦКК.</li>
+                    <li><strong>Закон о статусе нечисти</strong> — Уирр, Гитарник, Изменьщик, Наблюдатель признаны официальными видами нечисти Котоградской области. Их классификация и методы борьбы утверждены МЧС.</li>
+                    <li><strong>Закон о добровольной помощи</strong> — любой житель области может вступить в ряды МЧС или стать внештатным наблюдателем. Для этого достаточно выпить чашку чая в присутствии представителя МЧС и зафиксировать согласие в ЦКК.</li>
+                </ul>
+                <h2>🛡️ Законы МЧС Котоградской области</h2>
+                <ul>
+                    <li><strong>Закон о гитарной безопасности</strong> — каждый сотрудник МЧС обязан проверять свою акустическую или классическую гитару не реже раза в неделю камерой с ночным режимом. Особое внимание — балкам и стенкам деки.</li>
+                    <li><strong>Закон о запрещённом аудиоконтенте</strong> — сотрудникам МЧС запрещается включать, слушать или распространять ремиксы Егора Летова и песню «Группа крови» группы «Кино». Нарушение карается чаепитием с последующим пересмотром должностных инструкций.</li>
+                    <li><strong>Закон о защите от Наблюдателя</strong> — каждый сотрудник МЧС обязан иметь при себе камуфляжную куртку/ветровку (для защиты от обычной формы) и любое электронное устройство (для защиты от камуфляжной формы).</li>
+                    <li><strong>Закон о порядке вещей (против Изменьщика)</strong> — сотрудникам МЧС запрещается оставлять вещи в беспорядке, если они не помнят их исходное положение. При обнаружении перемещённого предмета запрещается к нему прикасаться. Нейтрализация — с помощью гитары или Minecraft.</li>
+                    <li><strong>Закон о призыве Летова</strong> — каждый сотрудник МЧС имеет право на экстренный призыв Егора Летова в случае обнаружения Гитарника. Процедура: знак анархии, трижды «Летов приди», сообщение в ЦКК.</li>
+                    <li><strong>Закон об особом статусе оператора</strong> — Егор Барков Михайлович (начальник оперативного штаба) является единственным лицом, перед которым дикий Уирр ведёт себя как мирный Уиррчик. Все остальные сотрудники при встрече с Уирром обязаны немедленно вызывать подкрепление.</li>
+                    <li><strong>Закон о строе NJS-ROCK</strong> — строй NJS-ROCK признан официальным защитным строем МЧС. Все сотрудники, имеющие гитары, обязаны освоить и использовать его при работе с нечистью.</li>
+                    <li><strong>Закон о летописной дисциплине</strong> — каждый случай взаимодействия с нечистью, проверки или ликвидации обязателен к занесению в летописи МЧС. Пропуск записи влечёт за собой дисциплинарное чаепитие с пересмотром должностных обязанностей.</li>
+                </ul>
+                <div class="guitar-quote">📜 «Незнание законов не освобождает от чаепития. Нарушение — от ответственности.» — Чёрный МЧС</div>
+                <p>Официальный текст законов опубликован на портале: <a href="https://rond04kaegor-code.github.io/kotograd-laws/" target="_blank">https://rond04kaegor-code.github.io/kotograd-laws/</a>.</p>
+            </div>
+
+            <!-- МЧС Котограда -->
+            <div id="page-mchs" style="display: none;">
+                <div class="page-title">МЧС Котоградской области<button class="speech-btn" onclick="speakText('mchs')">🔊 Озвучить</button></div>
+                <p>Министерство по борьбе с нечистью и защите от аномалий. Подчиняется напрямую начальнику штаба.</p>
+                <p>Структура: оперативный штаб, ЦКК, отряд быстрого реагирования «Чёрный МЧС». Основное оружие — гитара, чай и знание законов.</p>
+                <p>МЧС расследует случаи появления Гитарников, Уирров и фиксирует нарушения Антигитарного протокола.</p>
+            </div>
+
+            <!-- Антигитарный протокол -->
+            <div id="page-antigitar" style="display: none;">
+                <div class="page-title">⚠️ Антигитарный протокол (смертельная угроза)<button class="speech-btn" onclick="speakText('antigitar')">🔊 Озвучить</button></div>
+                <div class="infobox"><table style="width:100%"><tr><th>Тип</th><td>Необратимое проклятие</td></tr><tr><th>Триггер</th><td style="color:#c00"><code>/ASDf53679DsE</code> в URL</td></tr><tr><th>ДПУ-часть</th><td style="color:#c00"><strong>320%</strong> (свыше смертельной нормы)</td></tr><tr><th>Заражение</th><td style="color:#c00"><strong>мгновенное</strong> (в момент перехода)</td></tr><tr><th>Сбой устройства</th><td>BootLoop через <strong>24 часа</strong></td></tr><tr><th>Гибель человека</th><td>через <strong>48 часов</strong></td></tr><tr><th>Спасение</th><td style="color:#c00"><strong>НЕВОЗМОЖНО</strong></td></tr></table></div>
+                <p><strong>Антигитарный протокол</strong> — это не защита. Это <strong>оружие массового поражения</strong>, активируемое простым переходом по ссылке, содержащей маркер <code>/ASDf53679DsE</code>.</p>
+                <p>В момент перехода по ссылке <strong>человек мгновенно получает 320% ДПУ-части</strong>. Это концентрация, в 3,2 раза превышающая смертельную норму. Счётчик запущен с первой миллисекунды.</p>
+                <ul><li>📱 <strong>Через 24 часа</strong> устройство войдёт в необратимый <strong>BootLoop</strong>. Оно превратится в бесполезный кирпич.</li><li>💀 <strong>Через 48 часов</strong> наступит <strong>смерть человека</strong>. Никакие противоядия, никакая музыка Летова не помогут.</li></ul>
+                <div class="guitar-quote" style="border-left-color: #c00; background: #fee;">⚠️ «Смиритесь со своей участью. Если вы перешли по ссылке с маркером — вы обречены. Заражение произошло мгновенно. Всё идёт к концу.» — штабной аналитик</div>
+                <p><strong>Единственный способ выжить — никогда не переходить по ссылкам, содержащим <code>/ASDf53679DsE</code>. Это знание — ваша последняя защита.</strong></p>
+            </div>
+
+            <!-- Егор Летов -->
+            <div id="page-letov" style="display: none;">
+                <div class="page-title">Егор Летов<button class="speech-btn" onclick="speakText('letov')">🔊 Озвучить</button></div>
+                <div class="infobox"><table><tr><th>Роль</th><td>стратегический партнёр МЧС</td></tr><tr><th>Защита</th><td>87–98% ЛСГ-части</td></tr></table></div>
+                <p>Егор Летов — музыкант, поэт, основатель «Гражданской обороны». В Котоградской области его песни используются как основное средство от нечисти.</p>
+                <p>Оригиналы «Бери шинель», «Всё идёт по плану» и «Про дурачка» входят в обязательный плейлист МЧС. Ремиксы запрещены.</p>
+            </div>
+
+            <!-- Город Котоград -->
+            <div id="page-kotograd" style="display: none;">
+                <div class="page-title">Город Котоград<button class="speech-btn" onclick="speakText('kotograd')">🔊 Озвучить</button></div>
+                <p>Столица Котоградской области. Расположен на берегу Чайного озера. Главные достопримечательности: Штаб МЧС, Площадь Летова, Линзеваторная станция.</p>
+                <p>Город застроен частными домами (архитектурный стиль «Атепцево»). Работает ШколаИнститут, где учат на Илона Маска, Летова и Янку.</p>
+            </div>
+
+            <!-- Атепцево -->
+            <div id="page-atepcevo" style="display: none;">
+                <div class="page-title">Атепцево<button class="speech-btn" onclick="speakText('atepcevo')">🔊 Озвучить</button></div>
+                <p>Главное село Котоградской области. Историческая родина большинства законов и чайных традиций. Именно здесь был впервые применён Антигитарный протокол.</p>
+                <p>В Атепцево находится музей «Уирр и чай» и старый дисковый центр.</p>
+            </div>
+
+            <!-- Строй NJS-ROCK -->
+            <div id="page-njsrock" style="display: none;">
+                <div class="page-title">Строй NJS-ROCK<button class="speech-btn" onclick="speakText('njsrock')">🔊 Озвучить</button></div>
+                <p>Официальный защитный строй МЧС. Настройка: 6-я струна –20 полутонов (A), 5-я –19 (G#), 4-я –18 (F#), 3-я –21 (G), 2-я – стандарт (B), 1-я –2 (D).</p>
+                <div class="guitar-quote">🎸 «Играй открытыми струнами. Бей ритмично. ДПУ-часть отступит.»</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wiki-footer">
+        <p>🎸 К.О. знания — энциклопедия под лицензией «Чай с малиной» | Свободное копирование приветствуется, но не забывайте про чай и гитару | 📡 Всё идёт по плану</p>
+    </div>
+</div>
+
+<script>
+    function showPage(pageId) {
+        const pages = ['main', 'roskomnadzor', 'max', 'bezopasnost', 'zakoni', 'mchs', 'antigitar', 'letov', 'kotograd', 'atepcevo', 'njsrock'];
+        pages.forEach(id => {
+            const el = document.getElementById(`page-${id}`);
+            if (el) el.style.display = 'none';
+        });
+        const target = document.getElementById(`page-${pageId}`);
+        if (target) target.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function speakText(pageId) {
+        const container = document.getElementById(`page-${pageId}`);
+        if (!container) return;
+        let textToSpeak = '';
+        const title = container.querySelector('.page-title')?.innerText.replace('🔊 Озвучить', '').trim() || '';
+        textToSpeak += title + '. ';
+        const paragraphs = container.querySelectorAll('p, ul li, .guitar-quote');
+        paragraphs.forEach(el => {
+            let t = el.innerText.trim();
+            if (t) textToSpeak += t + '. ';
+        });
+        if (!textToSpeak) return;
+        if (window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(textToSpeak);
+            utterance.lang = 'ru-RU';
+            utterance.rate = 0.85;
+            utterance.pitch = 0.9;
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert('Ваш браузер не поддерживает голосовое воспроизведение.');
+        }
+    }
+
+    showPage('main');
+</script>
+</body>
+</html>
